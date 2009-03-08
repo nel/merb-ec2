@@ -1,12 +1,11 @@
 // Common JavaScript code across your application goes here.
 
-$(document).ready(function() {
+jQuery(document).ready(function() {
 
-    $(".delete").click(function(e) {
+    jQuery(".delete").click(function(e) {
         if (confirm("Are you sure?")) {
             var href = $(this).attr('href');
-            var href = href.substring(0, href.length - "/delete".length);
-
+    
             form = $("<form action='" + href + "' method='POST'>"
               + "<input type='hidden' name='_method' value='DELETE'/>"
               + "</form>"

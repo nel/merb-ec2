@@ -18,7 +18,7 @@
       <td><%= instance['instanceType'] %></td>
       <td><%= instance['imageId'] %></td>
       <td><%= instance['dnsName'] %></td>
-      <td><%= link_to 'Terminate Instance', "/instances/#{instance['instanceId']}" :class => 'delete-link' %></td>
+      <td><%= link_to 'Terminate Instance', "/instances/#{instance['instanceId']}", :class => 'delete' %></td>
     </tr>
   <% end %>
 </table>
