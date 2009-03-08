@@ -5,7 +5,7 @@ class Manager
     end
   end
     
-  def instanciate
+  def instantiate
     ::EC2::Base.new(  :access_key_id => self.class.config['access_key_id'],
                       :secret_access_key => self.class.config['secret_access_key'])
   end
