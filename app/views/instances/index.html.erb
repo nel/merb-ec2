@@ -8,6 +8,7 @@
     <th>Instance Type</th>
     <th>Image ID</th>
     <th>DNS Name</th>
+    <th>Status</th>
     <th>Action</th>
   </thead>
   <% for instance in @instances %>
@@ -18,6 +19,7 @@
       <td><%= instance['instanceType'] %></td>
       <td><%= instance['imageId'] %></td>
       <td><%= instance['dnsName'] %></td>
+      <td><%= instance['instanceState']['name'] %></td>
       <td><%= link_to 'Terminate Instance', "/instances/#{instance['instanceId']}", :class => 'delete' %></td>
     </tr>
   <% end %>

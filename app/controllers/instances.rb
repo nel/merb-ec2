@@ -47,8 +47,9 @@ class Instances < Application
 
   def destroy(id)
 	  @ec2.terminate_instances :instance_id => id
+	  redirect resource(:instances), :message => {:notice => "Instance was successfully destroyed"}
 	rescue EC2::Error
-		redirect resource(:instances), :message => {:notice => _("Instance was successfully destroyed")}
+		redirect resource(:instances), :message => {:notice => "Error destroy failed"}
   end
 
   private
