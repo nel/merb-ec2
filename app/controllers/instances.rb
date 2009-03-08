@@ -46,11 +46,8 @@ class Instances < Application
   end
 
   def destroy(id)
-		begin
-			@ec2.terminate_instances :instance_id => id
-		rescue EC2::InvalidInstanceIDMalformed
-			raise NotFound
-		end
+	  @ec2.terminate_instances :instance_id => id
+	rescue EC2::Error
 		redirect 'index', :message => {:notice => _("Instance was successfully destroyed")}
   end
 
