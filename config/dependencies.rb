@@ -32,8 +32,4 @@ dependency "dm-validations", dm_gems_version
 dependency "dm-serializer", dm_gems_version   
 
 dependency "merb_datamapper", merb_gems_version
-<<<<<<< HEAD:config/dependencies.rb
 dependency "grempe-amazon-ec2", {:require_as => 'EC2'}
-=======
-dependency "grempe-amazon-ec2", {:require_as => 'EC2'}
->>>>>>> fix: case insensitive oups:config/dependencies.rb
