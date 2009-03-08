@@ -1,3 +1,11 @@
 default: &default
   access_key_id: 16ZK32ZD6AFF507PYJ02
   secret_access_key: E9q0L3m5fJfH0HVjjGZdy7PQPU3LldITpTwNEYXi
+  
+production: 
+  <<: *default
+  
+development: 
+  <<: *default
+  
+  
