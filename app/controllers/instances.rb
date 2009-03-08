@@ -2,7 +2,7 @@ require 'pp'
 
 class Instances < Application
 
-  before :load_instances
+  before :load_config
 
   def index
     @instances = Instance.find_instances(@ec2)
@@ -27,20 +27,19 @@ class Instances < Application
   end
 
   def create(instance)
-    @instance = Instance.new(instance)
-
-    if @instance.save
-      redirect resource(@instance), :message => {:notice => _("Instance was successfully created")}
-    else
-      render :new
-    end
+    @instance = instance
+    @ec2.run_instances :image_id => instance[:ami]
+    redirect resource(:instances), :message => {:notice => "Instance was successfully created"}
+  
+  rescue EC2::Error
+    render :new
   end
 
   def update(id, instance)
     @instance = Instance.get(id)
     raise NotFound unless @instance
     if @instance.update_attributes(instance)
-      redirect resource(@instance), :message => {:notice => _("Instance was successfully updated")}
+      redirect resource(@instance), :message => {:notice => "Instance was successfully updated"}
     else
       display @instance, :edit
     end
@@ -57,7 +56,7 @@ class Instances < Application
 
   private
 
-  def load_instances
+  def load_config
     @ec2 = Manager.new.instantiate
   end
 

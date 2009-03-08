@@ -1,5 +1,4 @@
 class Instance
-
   class << self
 
     def find_instances(ec2)
@@ -10,4 +9,9 @@ class Instance
 
   end
 
+  include DataMapper::Resource
+
+  property :id,     Serial
+  attr_accessor :ami
+  attr_accessor :size
 end

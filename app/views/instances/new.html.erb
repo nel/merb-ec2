@@ -1,0 +1,6 @@
+<%= error_messages_for :instance %>
+<%= form_for @instance, :action => resource(:instances) do %>
+     <div><%= select :size, :collection => %w(small), :label => 'Instance Size' %></div>
+     <div><%= text_field :ami,  :label => 'AMI id' %></div>
+     <%= submit 'Launch' %>
+<% end =%>
