@@ -1,2 +1,24 @@
+<h1>Instances Management</h1>
 
-<%= @instances.inspect %>
+<table>
+  <thead>
+    <th>Instance ID</th>
+    <th>Kernel ID</th>
+    <th>Launch Time</th>
+    <th>Instance Type</th>
+    <th>Image ID</th>
+    <th>DNS Name</th>
+  </thead>
+  <% for instance in @instances %>
+    <tr>
+      <td><%= instance['instanceId'] %></td>
+      <td><%= instance['kernelId'] %></td>
+      <td><%= instance['launchTime'] %></td>
+      <td><%= instance['instanceType'] %></td>
+      <td><%= instance['imageId'] %></td>
+      <td><%= instance['dnsName'] %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'New Instance', resource(:instances, :new) %>

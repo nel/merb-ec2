@@ -1,10 +1,12 @@
+require 'pp'
+
 class Instances < Application
 
   before :load_instances
 
   def index
     raw_instances = @ec2.describe_instances
-    @instances = raw_instances['reservationSet']['item']
+    @instances = raw_instances['reservationSet']['item'].first['instancesSet']['item']
     display @instances
   end
 
